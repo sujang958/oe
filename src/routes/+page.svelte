@@ -24,4 +24,13 @@
       >Last praticed
     </Button>
   </div>
+  <div class="py-4"></div>
+  <main class="grid grid-cols-2 gap-6">
+    <div class="rounded-lg px-4 py-3 bg-neutral-100 cursor-pointer">
+      <p class="text-2xl font-bold">Japanese Restaurants</p>
+      <p class="text-base mt-0.5">21 words</p>
+      <div class="py-2"></div>
+      <div class="text-sm">Recent pratice on June 12, 2024</div>
+    </div>
+  </main>
 </div>
