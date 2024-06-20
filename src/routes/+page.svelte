@@ -33,4 +33,19 @@
       <div class="text-sm">Recent pratice on June 12, 2024</div>
     </div>
   </main>
+
+  <Button class="fixed bg-black rounded-full p-4 bottom-12 right-12"
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="stroke-white"><path d="M5 12h14" /><path d="M12 5v14" /></svg
+    ></Button
+  >
 </div>
