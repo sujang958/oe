@@ -1,3 +1,3 @@
 # oe
 
-Memorizing with ease.
+Memorize words
