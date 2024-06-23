@@ -29,6 +29,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"lucide-svelte": "^0.396.0",
 		"tailwind-merge": "^2.3.0"
 	}
 }

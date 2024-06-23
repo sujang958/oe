@@ -1,5 +1,6 @@
 <script>
-  import Button from "$lib/components/button.svelte"
+  import WordListItem from "$lib/components/WordListItem.svelte"
+import Button from "$lib/components/Button.svelte"
 </script>
 
 <div class="flex flex-col p-16">
@@ -26,12 +27,11 @@
   </div>
   <div class="py-4"></div>
   <main class="grid grid-cols-2 gap-6">
-    <div class="rounded-lg px-4 py-3 bg-neutral-100 cursor-pointer">
-      <p class="text-2xl font-bold">Japanese Restaurants</p>
-      <p class="text-base mt-0.5">21 words</p>
-      <div class="py-2"></div>
-      <div class="text-sm">Recent pratice on June 12, 2024</div>
-    </div>
+    <WordListItem />
+    <WordListItem />
+    <WordListItem />
+    <WordListItem />
+    <WordListItem />
   </main>
 
   <Button class="fixed bg-black rounded-full p-4 bottom-12 right-12"
