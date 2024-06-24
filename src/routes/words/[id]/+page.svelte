@@ -9,7 +9,7 @@
   <div class="py-5"></div>
 
   <p class="text-4xl font-bold">Japanese Restaurants</p>
-  <p class="text-lg mt-2 font-medium">21 words | Praticed 29 times</p>
+  <p class="text-lg mt-2 font-medium text-neutral-600">21 words | Praticed 29 times</p>
   <div class="py-3.5"></div>
   <div class="flex flex-row items-center justify-evenly w-full gap-x-3">
     <Button class="w-full justify-center p-1.5">Edit</Button>
@@ -19,14 +19,14 @@
   <p class="text-2xl font-semibold">Words</p>
   <div class="flex flex-col py-6 gap-y-4">
     <div class="flex flex-row items-center gap-x-6 justify-between">
-      <p class="text-lg text-balance">すみません</p>
-      <p class="text-lg text-balance max-w-80">excuse me; pardon me; I'm sorry; I beg your pardon</p>
+      <p class="text-xl text-balance">すみません</p>
+      <p class="text-lg text-balance text-right max-w-96">excuse me; pardon me; I'm sorry; I beg your pardon</p>
     </div>
     <div class="flex flex-row items-center gap-x-6 justify-between">
-      <p class="text-lg text-balance">
+      <p class="text-xl text-balance">
         <ruby>下<rt>くだ</rt></ruby>さい
       </p>
-      <p class="text-lg text-balance">please (give me)</p>
+      <p class="text-lg text-balance text-right max-w-96">please (give me)</p>
     </div>
   </div>
 </div>
