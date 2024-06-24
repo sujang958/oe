@@ -5,7 +5,7 @@
 <button
   type="button"
   class={twMerge(
-    "rounded-lg px-2.5 py-0.5 text-sm bg-neutral-200 text-neutral-800 font-medium flex flex-row items-center gap-x-1.5",
+    "rounded-lg px-2.5 py-0.5 text-sm bg-neutral-200 text-neutral-800 font-medium flex flex-row items-center gap-x-1.5 transition duration-200 hover:opacity-90",
     $$props.class
   )}
   ><slot />
