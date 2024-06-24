@@ -2,7 +2,15 @@
   import Button from "$lib/components/Button.svelte"
   import Input from "$lib/components/Input.svelte"
   import { ChevronLeft, MoveLeft, PlusIcon } from "lucide-svelte"
+  import { Swipe, SwipeItem } from "svelte-swipe"
 
+  const swipeConfig = {
+    autoplay: false,
+    delay: 2000,
+    showIndicators: true,
+    transitionDuration: 1000,
+    defaultIndex: 0
+  }
   // TODO: add "press / to focus"
 </script>
 
@@ -28,6 +36,27 @@
         excuse me; pardon me; I'm sorry; I beg your pardon
       </p>
     </div>
+
+    <section class="fixed bottom-24 rounded-full w-72 h-20 bg-red-500">
+      Drop here to delete
+    </section>
+
+
+    <div class="h-72">
+      <!-- FUck this shit it only supports the fixed height -->
+      <Swipe> 
+        <SwipeItem>
+          <div class="flex flex-row items-center gap-x-6 justify-between">
+            <p class="text-xl text-balance">すみません</p>
+            <p class="text-lg text-balance text-right max-w-96">
+              excuse me; pardon me; I'm sorry; I beg your pardon
+            </p>
+          </div>
+        </SwipeItem>
+        <SwipeItem>del</SwipeItem>
+      </Swipe>
+    </div>
+
     <div class="flex flex-row items-center gap-x-6 justify-between">
       <p class="text-xl text-balance" contenteditable>
         <ruby>下<rt>くだ</rt></ruby>さい
@@ -42,3 +71,5 @@
     <Button class="flex-1 justify-center py-1.5 text-base bg-green-300 text-green-950">Save</Button>
   </div>
 </div>
+
+<!-- TODO: add prettierplugintailwindcss -->

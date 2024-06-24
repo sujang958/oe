@@ -49,6 +49,9 @@ devDependencies:
   svelte-check:
     specifier: ^3.6.0
     version: 3.6.0(postcss@8.4.38)(svelte@4.2.7)
+  svelte-swipe:
+    specifier: ^2.0.4
+    version: 2.0.4(svelte@4.2.7)
   tailwindcss:
     specifier: ^3.4.4
     version: 3.4.4
@@ -1663,6 +1666,14 @@ packages:
       strip-indent: 3.0.0
       svelte: 4.2.7
       typescript: 5.4.5
+    dev: true
+
+  /svelte-swipe@2.0.4(svelte@4.2.7):
+    resolution: {integrity: sha512-BkfQ0GR/sZcNn9iqJwxvzGzVXUGAHSR/SXLvyPuGzeyozu1+MlAVLfwgOSqU6bxNk+aHQevbTalFncHwxNikTw==}
+    peerDependencies:
+      svelte: ^3.54.0 || ^4.0.0
+    dependencies:
+      svelte: 4.2.7
     dev: true
 
   /svelte@4.2.7:
