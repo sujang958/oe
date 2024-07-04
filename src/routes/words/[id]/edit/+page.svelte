@@ -28,23 +28,32 @@
       <Input value="Japanese Restaurants" />
     </label>
 
-    <div class="py-4"><hr /></div>
+    <div class="mt-4">
+      <p class="text-sm">Words</p>
+      <div class="py-3 flex flex-row items-center gap-x-3">
+        <!-- <input type="checkbox" class="rounded" id="" /> -->
+        <Button class="bg-neutral-100">Select All</Button>
+        <Button class="bg-neutral-100">Deselect All</Button>
+        <Button class="bg-neutral-100">Undo</Button>
+        <Button class="bg-red-200 text-red-900">Delete</Button>
+      </div>
+    </div>
 
-    <div class="flex flex-row items-center gap-x-6 justify-between">
+    <!-- TODO: support reordering someday -->
+    <!-- <div class="flex flex-row items-center gap-x-6 justify-between">
       <p class="text-xl text-balance">すみません</p>
       <p class="text-lg text-balance text-right max-w-96">
         excuse me; pardon me; I'm sorry; I beg your pardon
       </p>
-    </div>
+    </div> -->
 
-    <section class="fixed bottom-24 rounded-full w-72 h-20 bg-red-500">
+    <!-- <section class="fixed bottom-24 rounded-full w-72 h-20 bg-red-500">
       Drop here to delete
-    </section>
-
-
+    </section> -->
+    <!-- 
     <div class="h-72">
-      <!-- FUck this shit it only supports the fixed height -->
-      <Swipe> 
+      FUck this shit it only supports the fixed height 
+      <Swipe>
         <SwipeItem>
           <div class="flex flex-row items-center gap-x-6 justify-between">
             <p class="text-xl text-balance">すみません</p>
@@ -55,14 +64,18 @@
         </SwipeItem>
         <SwipeItem>del</SwipeItem>
       </Swipe>
+    </div> -->
+
+    <div class="flex flex-row items-center gap-x-6">
+      <input type="checkbox" class="rounded" name="" id="" />
+      <div class="flex flex-row items-center justify-between gap-x-4 w-full">
+        <p class="text-xl text-balance" contenteditable>
+          <ruby>下<rt>くだ</rt></ruby>さい
+        </p>
+        <p class="text-lg text-balance text-right max-w-96" contenteditable>please (give me)</p>
+      </div>
     </div>
 
-    <div class="flex flex-row items-center gap-x-6 justify-between">
-      <p class="text-xl text-balance" contenteditable>
-        <ruby>下<rt>くだ</rt></ruby>さい
-      </p>
-      <p class="text-lg text-balance text-right max-w-96" contenteditable>please (give me)</p>
-    </div>
     <Button class="justify-center text-base mt-6 bg-neutral-100">+</Button>
   </div>
 
