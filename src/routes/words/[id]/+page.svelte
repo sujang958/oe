@@ -48,6 +48,7 @@
       >
     </header>
 
+    <!-- TODO: add animations when changing between tabs -->
     <main class="py-1 mt-2">
       <div class="flex flex-col py-6 gap-y-4">
         <div class="flex flex-row items-center gap-x-6 justify-between">
