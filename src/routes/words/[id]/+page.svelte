@@ -10,7 +10,9 @@
 </script>
 
 <div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center">
-  <GoBackButton />
+  <Button on:click={() => history.back()} class="-ml-2 -mt-2 hover:underline bg-transparent">
+    <ChevronLeft class="h-4 w-4" />
+    Go Back</Button>
 
   <div class="py-5"></div>
 
@@ -113,7 +115,7 @@
   >
   <Button
     on:click={() => goto(`/words/${$page.params.id}/edit`)}
-    class="justify-center text-base gap-x-2 py-1.5 px-3"
+    class="justify-center text-base gap-x-2 py-1.5 px-3.5"
   >
     <Pencil class="h-4 w-4" />
     Edit</Button

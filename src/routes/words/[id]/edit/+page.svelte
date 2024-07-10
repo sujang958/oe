@@ -18,7 +18,7 @@
 <div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen">
   <GoBackButton />
 
-  <div class="py-5"></div>
+  <div class="py-3"></div>
 
   <div class="flex flex-col py-6 gap-y-4">
     <!-- svelte-ignore a11y-label-has-associated-control -->
