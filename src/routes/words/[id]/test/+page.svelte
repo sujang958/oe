@@ -8,7 +8,7 @@
 
 <div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen">
   <header class="flex flex-row items-center justify-between">
-    <Button class="bg-transparent  -ml-2"><ChevronLeft class="h-5 w-5" /> Go Back</Button>
+    <Button class="bg-transparent hover:underline"><ChevronLeft class="h-5 w-5" /> Go Back</Button>
     <p class="text-base font-meidum">Japanese Restaurants</p>
   </header>
 

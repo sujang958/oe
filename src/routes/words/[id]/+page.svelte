@@ -4,14 +4,13 @@
   import { ChevronLeft, History, MoveLeft, Pencil } from "lucide-svelte"
   import { goto } from "$app/navigation"
   import { page } from "$app/stores"
+    import GoBackButton from "$lib/components/GoBackButton.svelte"
 
   let currentTab: "words" | "stats" = "words" // TODO: load this from the url
 </script>
 
 <div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center">
-  <Button on:click={() => history.back()} class="bg-transparent  -ml-2"
-    ><ChevronLeft class="h-5 w-5" /> Go Back</Button
-  >
+  <GoBackButton />
 
   <div class="py-5"></div>
 

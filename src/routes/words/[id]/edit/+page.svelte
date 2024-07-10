@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from "$lib/components/Button.svelte"
+    import GoBackButton from "$lib/components/GoBackButton.svelte"
   import Input from "$lib/components/Input.svelte"
   import { ChevronLeft, MoveLeft, PlusIcon } from "lucide-svelte"
   import { Swipe, SwipeItem } from "svelte-swipe"
@@ -15,9 +16,7 @@
 </script>
 
 <div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen">
-  <header class="flex flex-row items-center justify-between">
-    <Button class="bg-transparent  -ml-2"><ChevronLeft class="h-5 w-5" /> Go Back</Button>
-  </header>
+  <GoBackButton />
 
   <div class="py-5"></div>
 
