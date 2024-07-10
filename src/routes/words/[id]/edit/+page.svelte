@@ -121,7 +121,7 @@
 <div class="fixed left-0 bottom-4 w-full flex flex-col items-center">
   <div class="max-w-xl px-4 w-full flex flex-row items-center gap-x-3">
     <Button class="flex-1 justify-center py-1.5 text-base">Cancel</Button>
-    <Button class="flex-1 justify-center py-1.5 text-base bg-green-300 text-green-950">Save</Button>
+    <Button class="flex-1 justify-center py-1.5 text-base bg-green-400 text-green-950">Save</Button>
   </div>
 </div>
 

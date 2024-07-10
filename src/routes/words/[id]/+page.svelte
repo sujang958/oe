@@ -1,15 +1,17 @@
 <script lang="ts">
   import BottomArea from "$lib/components/BottomArea.svelte"
   import Button from "$lib/components/Button.svelte"
-  import { ChevronLeft, History, MoveLeft } from "lucide-svelte"
+  import { ChevronLeft, History, MoveLeft, Pencil } from "lucide-svelte"
+  import { goto } from "$app/navigation"
+  import { page } from "$app/stores"
 
   let currentTab: "words" | "stats" = "words" // TODO: load this from the url
-
-  $: console.log(currentTab)
 </script>
 
 <div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center">
-  <Button class="bg-transparent  -ml-2"><ChevronLeft class="h-5 w-5" /> Go Back</Button>
+  <Button on:click={() => history.back()} class="bg-transparent  -ml-2"
+    ><ChevronLeft class="h-5 w-5" /> Go Back</Button
+  >
 
   <div class="py-5"></div>
 
@@ -55,7 +57,11 @@
         ? ''
         : '-translate-x-full'}"
     >
-      <div class="flex flex-col py-6 gap-y-4 transition duration-300 {currentTab == "words" ? "blur-0" : "blur-md"}">
+      <div
+        class="flex flex-col py-6 gap-y-4 transition duration-300 {currentTab == 'words'
+          ? 'blur-0'
+          : 'blur-md'}"
+      >
         <div class="flex flex-row items-center gap-x-6 justify-between">
           <p class="text-xl text-balance">すみません</p>
           <p class="text-lg text-balance text-right max-w-96">
@@ -102,5 +108,15 @@
 </div>
 
 <BottomArea>
-  <Button class="w-full justify-center text-base py-1.5 bg-blue-300 text-blue-950">Test</Button>
+  <Button
+    on:click={() => goto(`/words/${$page.params.id}/test`)}
+    class="flex-1 justify-center text-base py-1.5 bg-blue-400 text-blue-950">Test</Button
+  >
+  <Button
+    on:click={() => goto(`/words/${$page.params.id}/edit`)}
+    class="justify-center text-base gap-x-2 py-1.5 px-3"
+  >
+    <Pencil class="h-4 w-4" />
+    Edit</Button
+  >
 </BottomArea>
