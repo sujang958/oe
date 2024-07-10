@@ -49,8 +49,13 @@
     </header>
 
     <!-- TODO: add animations when changing between tabs -->
-    <main class="py-1 mt-2">
-      <div class="flex flex-col py-6 gap-y-4">
+    <main
+      class="relative py-1 mt-2 flex flex-row items-center duration-300 transition {currentTab ==
+      'words'
+        ? ''
+        : '-translate-x-full'}"
+    >
+      <div class="flex flex-col py-6 gap-y-4 transition duration-300 {currentTab == "words" ? "blur-0" : "blur-md"}">
         <div class="flex flex-row items-center gap-x-6 justify-between">
           <p class="text-xl text-balance">すみません</p>
           <p class="text-lg text-balance text-right max-w-96">
@@ -62,6 +67,18 @@
             <ruby>下<rt>くだ</rt></ruby>さい
           </p>
           <p class="text-lg text-balance text-right max-w-96">please (give me)</p>
+        </div>
+      </div>
+      <div
+        class={`absolute top-2 min-h-full w-full bg-white flex flex-col py-6 gap-y-4 translate-x-full duration-300 transition ${currentTab == "stats" ? "blur-0" : "blur-md"}`}
+      >
+        <div class="flex flex-row items-center gap-x-6 justify-between">
+          <p class="text-xl text-balance">Times practiced</p>
+          <p class="text-lg text-balance text-right max-w-96">1</p>
+        </div>
+        <div class="flex flex-row items-center gap-x-6 justify-between">
+          <p class="text-xl text-balance">Test History</p>
+          <p class="text-lg text-balance text-right max-w-96">View</p>
         </div>
       </div>
     </main>
