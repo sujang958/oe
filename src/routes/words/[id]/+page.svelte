@@ -43,11 +43,11 @@
 
       <Button
         on:click={() => (currentTab = "words")}
-        class="justify-center text-lg font-medium flex-1 bg-transparent">Words</Button
+        class="justify-center text-lg font-medium flex-1 bg-transparent hover:underline">Words</Button
       >
       <Button
         on:click={() => (currentTab = "stats")}
-        class="justify-center text-lg font-medium bg-transparent flex-1">Stats</Button
+        class="justify-center text-lg font-medium bg-transparent hover:underline flex-1">Stats</Button
       >
     </header>
 
