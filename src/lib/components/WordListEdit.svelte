@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Plus, Ticket } from "lucide-svelte"
+  import { Plus, Table, Ticket } from "lucide-svelte"
   import Button from "./Button.svelte"
   import Input from "./Input.svelte"
   import type { WordList } from "$lib/types/WordList"
@@ -10,6 +10,8 @@
     title: "",
     words: []
   }
+
+  let checkedWord: Record<string, boolean> = {}
 </script>
 
 <div class="flex flex-col py-6 gap-y-4">
@@ -22,7 +24,20 @@
   <div class="mt-4">
     <p class="text-sm font-medium">Words</p>
     <div class="py-3 flex flex-row items-center gap-x-3">
-      <input type="checkbox" class="rounded w-3.5 h-3.5" id="" />
+      <input
+        type="checkbox"
+        class="rounded w-3.5 h-3.5"
+        id=""
+        on:change={(event) => {
+          if (!(event.target instanceof HTMLInputElement)) return
+
+          if (event.target.checked)
+            checkedWord = Object.fromEntries(
+              wordlist.words.map((word, i) => [`${word}:${i}`, true])
+            )
+          else checkedWord = {}
+        }}
+      />
       <!-- <Button class="bg-neutral-100">Select All</Button> -->
       <!-- <Button class="bg-neutral-100">Deselect All</Button> -->
       <Button class="bg-neutral-100">Undo</Button>
@@ -33,10 +48,16 @@
   <section class="flex flex-col gap-y-4">
     {#each wordlist.words as word, i (i)}
       <div class="flex flex-row items-center gap-x-6">
-        <input type="checkbox" class="rounded" name="" id="" />
+        <input
+          type="checkbox"
+          class="rounded"
+          name=""
+          id=""
+          bind:checked={checkedWord[`${word}:${i}`]}
+        />
         <div class="flex flex-row items-center justify-between gap-x-4 w-full">
           <!-- <Input class="py-0.5 px-2 w-[38%]" placeholder="word" bind:value={word.word}></Input> -->
-           <Textarea class="py-0.5 px-2 w-[40%]" placeholder="word" />
+          <Textarea class="py-0.5 px-2 w-[40%]" placeholder="word" />
           <Textarea class="py-0.5 px-2 w-[50%]" placeholder="meaning" />
         </div>
       </div>
