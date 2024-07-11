@@ -36,18 +36,18 @@
   <section class="flex flex-col">
     <header class="relative flex flex-row items-center justify-evenly">
       <div
-        class={`transition duration-300 left-0 rounded-lg -z-10 bg-neutral-200/85 absolute top-0 w-1/2 h-full ${currentTab == "words" ? "translate-x-0" : "translate-x-full"}`}
+        class={`transition duration-300 left-0 rounded-lg -z-10 bg-neutral-200/70 absolute top-0 w-1/2 h-full ${currentTab == "words" ? "translate-x-0" : "translate-x-full"}`}
       >
         &nbsp;
       </div>
 
       <Button
         on:click={() => (currentTab = "words")}
-        class="justify-center text-lg font-medium flex-1 bg-transparent hover:underline">Words</Button
+        class="justify-center text-black text-lg font-medium flex-1 bg-transparent hover:underline">Words</Button
       >
       <Button
         on:click={() => (currentTab = "stats")}
-        class="justify-center text-lg font-medium bg-transparent hover:underline flex-1">Stats</Button
+        class="justify-center text-black text-lg font-medium bg-transparent hover:underline flex-1">Stats</Button
       >
     </header>
 

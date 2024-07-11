@@ -4,9 +4,7 @@
   export let value = ""
 </script>
 
-<input
-  
-  type="text"
+<textarea
   name=""
   id=""
   {...$$restProps}

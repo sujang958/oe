@@ -1,6 +1,7 @@
 <script>
   import WordListItem from "$lib/components/WordListItem.svelte"
-import Button from "$lib/components/Button.svelte"
+  import Button from "$lib/components/Button.svelte"
+  import { goto } from "$app/navigation"
 </script>
 
 <div class="flex flex-col p-16">
@@ -34,7 +35,7 @@ import Button from "$lib/components/Button.svelte"
     <WordListItem />
   </main>
 
-  <Button class="fixed bg-black rounded-full p-4 bottom-12 right-12"
+  <Button on:click={() => goto("/new")} class="fixed bg-black rounded-full p-4 bottom-12 right-12"
     ><svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
