@@ -17,7 +17,7 @@
 
   // $: console.log(wordlist.words, checkedIndex, )
 
-  $: checkedIndex = checkedWord.filter((checked) => checked).map((_, i) => i)
+  $: checkedIndex = checkedWord.map((checked, i) => (checked ? i : null)).filter((v) => v != null)
   $: if (checkedWord.filter((c) => c).length == wordlist.words.length) {
     allChecked = true
   } else {
@@ -53,7 +53,12 @@
         on:click={() => {
           const _checkedIndex = structuredClone(checkedIndex)
 
+          console.log(checkedWord, checkedIndex)
+
           checkedWord = checkedWord.filter((_, i) => !_checkedIndex.includes(i))
+
+          console.log(checkedWord, checkedIndex)
+
           wordlist = {
             ...wordlist,
             words: wordlist.words.filter((_, i) => !_checkedIndex.includes(i))
