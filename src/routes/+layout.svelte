@@ -1,5 +1,6 @@
 <script>
-  import "./styles.css"
+  import { Toaster } from "svelte-french-toast"
+import "./styles.css"
 </script>
 
 <div class="flex flex-col items-center w-full font-pretendard">
@@ -7,3 +8,5 @@
     <slot />
   </main>
 </div>
+
+<Toaster />
