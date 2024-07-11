@@ -63,7 +63,10 @@
             ...wordlist,
             words: wordlist.words.filter((_, i) => !_checkedIndex.includes(i))
           }
-        }}>Delete</Button
+        }}
+        >Delete {checkedIndex.length > 0
+          ? `${checkedIndex.length} item${checkedIndex.length > 1 ? "s" : ""}`
+          : ""}</Button
       >
     </div>
   </div>
