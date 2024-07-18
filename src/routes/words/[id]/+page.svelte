@@ -1,7 +1,7 @@
 <script lang="ts">
   import BottomArea from "$lib/components/BottomArea.svelte"
   import Button from "$lib/components/Button.svelte"
-  import { ChevronLeft,Pencil } from "lucide-svelte"
+  import { ChevronLeft, Pencil } from "lucide-svelte"
   import { goto } from "$app/navigation"
   import { page } from "$app/stores"
   import { WordLists } from "$lib/stores/WordList"
@@ -75,7 +75,7 @@
         : '-translate-x-full'}"
     >
       <div
-        class="h-full flex w-full flex-col py-3 gap-y-4 transition duration-300 px-5 rounded-lg relative"
+        class="h-full flex w-full flex-col py-3 gap-y-4 transition duration-300 rounded-lg relative {currentTab == "words" ? "opacity-100" : "opacity-0"}"
       >
         {#each wordList.words as word}
           <div class="flex flex-row items-center gap-x-6 justify-between">
@@ -89,7 +89,7 @@
       </div>
 
       <div
-        class={`absolute left-4 top-2 px-5 rounded-lg overflow-visible w-full flex flex-col py-3 gap-y-4 translate-x-full duration-300 transition`}
+        class={`absolute top-2 ${currentTab == "stats" ? "opacity-100" : "opacity-0"} rounded-lg overflow-visible w-full flex flex-col py-3 gap-y-4 translate-x-full duration-300 transition`}
       >
         <div class="flex flex-row items-center gap-x-6 justify-between">
           <p class="text-lg text-balance">Times practiced</p>
