@@ -8,7 +8,7 @@
   import type { WordList } from "$lib/types/WordList"
     import toast from "svelte-french-toast"
 
-  let wordlist: WordList = { title: "", words: [] }
+  let wordlist: WordList = { title: "", words: [], id: crypto.randomUUID() }
 </script>
 
 <div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen">

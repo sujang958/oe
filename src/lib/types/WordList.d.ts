@@ -5,6 +5,7 @@ export type Word = {
 }
 
 export type WordList = {
+  id: string
   title: string
   words: Word[]
 }
