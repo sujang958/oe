@@ -8,7 +8,7 @@
   import { WordLists } from "$lib/stores/WordList"
   import type { WordList } from "$lib/types/WordList"
   import { onMount } from "svelte"
-    import toast from "svelte-french-toast"
+  import toast from "svelte-french-toast"
   // TODO: add "press / to focus"
 
   const id = $page.params.id
@@ -44,8 +44,13 @@
   <Button
     class="flex-1 justify-center py-1.5 text-base bg-green-400 text-green-950"
     on:click={() => {
-      console.log(wordlist)
-      $WordLists[id] = wordlist
+      if (wordlist.title.replace(/ /gi, "").length <= 0)
+        return toast.error("Title must contain a character at least", {duration: 2500})
+
+      $WordLists[id] = {
+        ...wordlist,
+        words: wordlist.words.filter((word) => word.word && word.meaning)
+      }
       history.back()
       toast.success("Saved")
     }}>Save</Button
