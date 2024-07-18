@@ -2,6 +2,7 @@
   import WordListItem from "$lib/components/WordListItem.svelte"
   import Button from "$lib/components/Button.svelte"
   import { goto } from "$app/navigation"
+  import { WordLists } from "$lib/stores/WordList"
 </script>
 
 <div class="flex flex-col p-16">
@@ -28,11 +29,9 @@
   </div>
   <div class="py-4"></div>
   <main class="grid grid-cols-2 gap-6">
-    <WordListItem />
-    <WordListItem />
-    <WordListItem />
-    <WordListItem />
-    <WordListItem />
+    {#each $WordLists as wordList}
+      <WordListItem wordList={wordList} />
+    {/each}
   </main>
 
   <Button on:click={() => goto("/new")} class="fixed bg-black rounded-full p-4 bottom-12 right-12"
