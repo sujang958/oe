@@ -105,7 +105,7 @@
 
   <Button
     on:click={() => {
-      wordlist.words = [...wordlist.words, { word: "", meaning: "" }]
+      wordlist = { ...wordlist, words: [...wordlist.words, { word: "", meaning: "" }] }
       allChecked = false
     }}
     class="justify-center text-base mt-6 bg-neutral-100 py-1"><Plus class="h-4 w-4" /></Button
