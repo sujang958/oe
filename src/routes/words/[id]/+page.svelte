@@ -1,12 +1,10 @@
 <script lang="ts">
   import BottomArea from "$lib/components/BottomArea.svelte"
   import Button from "$lib/components/Button.svelte"
-  import { ChevronLeft, History, MoveLeft, Pencil } from "lucide-svelte"
+  import { ChevronLeft,Pencil } from "lucide-svelte"
   import { goto } from "$app/navigation"
   import { page } from "$app/stores"
-  import GoBackButton from "$lib/components/GoBackButton.svelte"
   import { WordLists } from "$lib/stores/WordList"
-  import { redirect } from "@sveltejs/kit"
   import { onMount } from "svelte"
   import type { WordList } from "$lib/types/WordList"
 
