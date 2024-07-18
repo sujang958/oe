@@ -17,7 +17,11 @@
     Go home</Button
   >
 
-  <div class="py-3"></div>
+  <div class="py-6"></div>
+
+  <p class="text-2xl font-bold">Creating a new wordlist</p>
+
+  <div></div>
 
   <WordListEdit bind:wordlist />
 </div>
