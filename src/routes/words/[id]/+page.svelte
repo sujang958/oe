@@ -46,7 +46,7 @@
   <!-- <div class="py-8"></div> -->
   <div class="py-6"></div>
 
-  <section class="flex flex-col relative flex-1">
+  <section id="plz" class="flex flex-col relative flex-1 overflow-clip">
     <header class="relative flex flex-row items-center justify-evenly py-0.5">
       <div
         class={`transition duration-300 left-0 rounded-3xl -z-10 bg-neutral-200/50 absolute top-0 w-1/2 h-full ${currentTab == "words" ? "translate-x-0" : "translate-x-full"}`}
@@ -75,7 +75,10 @@
         : '-translate-x-full'}"
     >
       <div
-        class="h-full flex w-full flex-col py-3 gap-y-4 transition duration-300 rounded-lg relative {currentTab == "words" ? "opacity-100" : "opacity-0"}"
+        class="h-full flex w-full flex-col py-3 gap-y-4 transition duration-300 rounded-lg relative {currentTab ==
+        'words'
+          ? 'opacity-100'
+          : 'opacity-0'}"
       >
         {#each wordList.words as word}
           <div class="flex flex-row items-center gap-x-6 justify-between">
