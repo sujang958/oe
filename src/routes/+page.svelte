@@ -29,7 +29,7 @@
   </div>
   <div class="py-4"></div>
   <main class="grid grid-cols-2 gap-6">
-    {#each $WordLists as wordList}
+    {#each Object.entries($WordLists) as [_, wordList]}
       <WordListItem wordList={wordList} />
     {/each}
   </main>

@@ -6,7 +6,7 @@
   import { goto } from "$app/navigation"
   import { ChevronLeft } from "lucide-svelte"
   import type { WordList } from "$lib/types/WordList"
-    import toast from "svelte-french-toast"
+  import toast from "svelte-french-toast"
 
   let wordlist: WordList = { title: "", words: [], id: crypto.randomUUID() }
 </script>
@@ -26,7 +26,7 @@
   <Button class="bg-red-200 text-red-900 text-base w-full justify-center py-1.5">Cancel</Button>
   <Button
     on:click={() => {
-      $WordLists = [...$WordLists, wordlist]
+      $WordLists = { ...$WordLists, [wordlist.id]: wordlist }
       toast.success("Created")
       goto("/")
     }}
