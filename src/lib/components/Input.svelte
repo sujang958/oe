@@ -5,7 +5,7 @@
 </script>
 
 <input
-  
+  on:change
   type="text"
   name=""
   id=""

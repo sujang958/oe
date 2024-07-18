@@ -7,6 +7,7 @@
   import Textarea from "./Textarea.svelte"
 
   export let wordlist: WordList = {
+    id: "-1",
     title: "",
     words: []
   }
@@ -29,7 +30,13 @@
   <!-- svelte-ignore a11y-label-has-associated-control -->
   <label class="flex flex-col gap-y-1.5">
     <p class="text-sm font-medium">Title</p>
-    <Input bind:value={wordlist.title} />
+    <Input
+      on:change={(event) => {
+        if (event.target instanceof HTMLInputElement)
+          wordlist = { ...wordlist, title: event.target.value }
+      }}
+      bind:value={wordlist.title}
+    />
   </label>
 
   <div class="mt-4">
