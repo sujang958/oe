@@ -7,6 +7,8 @@
   import { WordLists } from "$lib/stores/WordList"
   import { onMount } from "svelte"
   import type { WordList } from "$lib/types/WordList"
+  import TopArea from "$lib/components/TopArea.svelte"
+  import GoBackButton from "$lib/components/GoBackButton.svelte"
 
   const id = $page.params.id
 
@@ -20,10 +22,9 @@
 </script>
 
 <div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full min-h-screen self-center">
-  <Button on:click={() => goto("/")} class="-ml-2 -mt-2 hover:underline bg-transparent">
-    <ChevronLeft class="h-4 w-4" />
-    Go Back</Button
-  >
+  <TopArea>
+    <GoBackButton where="/" />
+  </TopArea>
 
   <div class="py-5"></div>
 

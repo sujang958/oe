@@ -17,7 +17,7 @@
 
 <div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen">
   <TopArea class="justify-between">
-    <GoBackButton where="/wordlist/${id}" />
+    <GoBackButton where="/wordlist/{id}" />
     <p class="text-base font-meidum">{wordlist.title}</p>
   </TopArea>
 
