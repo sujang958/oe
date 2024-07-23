@@ -39,9 +39,9 @@
     />
   </label>
 
-  <div class="mt-4">
+  <div class="mt-4 relative">
     <p class="text-sm font-medium">Words</p>
-    <div class="py-3 flex flex-row items-center gap-x-3">
+    <div class="py-3 flex flex-row items-center gap-x-4 sticky top-16 z-10 bg-white">
       <input
         type="checkbox"
         class="rounded w-3.5 h-3.5"
@@ -54,17 +54,13 @@
       />
       <!-- <Button class="bg-neutral-100">Select All</Button> -->
       <!-- <Button class="bg-neutral-100">Deselect All</Button> -->
-      <Button class="bg-neutral-100">Undo</Button>
+      <!-- <Button class="bg-neutral-100">Undo</Button> TODO: how tf -->
       <Button
         class="bg-red-200 text-red-900"
         on:click={() => {
           const _checkedIndex = structuredClone(checkedIndex)
 
-          console.log(checkedWord, checkedIndex)
-
           checkedWord = checkedWord.filter((_, i) => !_checkedIndex.includes(i))
-
-          console.log(checkedWord, checkedIndex)
 
           wordlist = {
             ...wordlist,
@@ -76,20 +72,20 @@
           : ""}</Button
       >
     </div>
-  </div>
 
-  <section class="flex flex-col gap-y-4">
-    {#each wordlist.words as word, i}
-      <div class="flex flex-row items-center gap-x-6">
-        <input type="checkbox" class="rounded" name="" id="" bind:checked={checkedWord[i]} />
-        <div class="flex flex-row items-center justify-between gap-x-4 w-full">
-          <!-- <Input class="py-0.5 px-2 w-[38%]" placeholder="word" bind:value={word.word}></Input> -->
-          <Textarea class="py-0.5 px-2 w-[40%]" bind:value={word.word} placeholder="word" />
-          <Textarea class="py-0.5 px-2 w-[50%]" bind:value={word.meaning} placeholder="meaning" />
+    <section class="flex flex-col gap-y-4 mt-4">
+      {#each wordlist.words as word, i}
+        <div class="flex flex-row items-center gap-x-6">
+          <input type="checkbox" class="rounded" name="" id="" bind:checked={checkedWord[i]} />
+          <div class="flex flex-row items-center justify-between gap-x-4 w-full">
+            <!-- <Input class="py-0.5 px-2 w-[38%]" placeholder="word" bind:value={word.word}></Input> -->
+            <Textarea class="py-0.5 px-2 w-[40%]" bind:value={word.word} placeholder="word" />
+            <Textarea class="py-0.5 px-2 w-[50%]" bind:value={word.meaning} placeholder="meaning" />
+          </div>
         </div>
-      </div>
-    {/each}
-  </section>
+      {/each}
+    </section>
+  </div>
   <!-- 
   <div class="flex flex-row items-center gap-x-6">
         <input type="checkbox" class="rounded" name="" id="" />

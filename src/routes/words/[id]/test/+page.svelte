@@ -11,7 +11,7 @@
   const id = $page.params.id
   const wordlist =
     $WordLists[id] ??
-    ({ id: -1, title: "", words: [{ word: "Loading", meaning: "" }] } satisfies WordList)
+    ({ id: "-1", title: "", words: [{ word: "Loading", meaning: "" }] } satisfies WordList)
 
   let currentWordIndex = 0
 

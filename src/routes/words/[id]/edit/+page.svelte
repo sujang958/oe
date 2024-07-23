@@ -10,7 +10,6 @@
   import type { WordList } from "$lib/types/WordList"
   import { onMount } from "svelte"
   import toast from "svelte-french-toast"
-  // TODO: add "press / to focus"
 
   const id = $page.params.id
   let wordlist = $WordLists[id] ?? { id: "-1", title: "", words: [] }
