@@ -6,9 +6,12 @@
   import Input from "$lib/components/Input.svelte"
   import TopArea from "$lib/components/TopArea.svelte"
   import { WordLists } from "$lib/stores/WordList"
+  import type { WordList } from "$lib/types/WordList"
 
   const id = $page.params.id
-  const wordlist = $WordLists[id] ?? { id: -1, title: "", words: [] }
+  const wordlist =
+    $WordLists[id] ??
+    ({ id: -1, title: "", words: [{ word: "Loading", meaning: "" }] } satisfies WordList)
 
   let currentWordIndex = 0
 
@@ -17,7 +20,7 @@
 
 <div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen">
   <TopArea class="justify-between">
-    <GoBackButton where="/wordlist/{id}" />
+    <GoBackButton where="/words/{id}" />
     <p class="text-base font-meidum">{wordlist.title}</p>
   </TopArea>
 
