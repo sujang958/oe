@@ -5,7 +5,8 @@
   import { WordLists } from "$lib/stores/WordList"
 </script>
 
-<div class="flex flex-col p-16">
+<div class="flex flex-col p-8 md:p-16">
+  <div class="py-4 md:p-0"></div>
   <p class="text-3xl font-bold">My wordlists</p>
   <div class="py-1"></div>
   <div class="py-6 flex flex-row items-center gap-x-2">
@@ -28,9 +29,9 @@
     </Button>
   </div>
   <div class="py-4"></div>
-  <main class="grid grid-cols-2 gap-6">
+  <main class="grid md:grid-cols-2 gap-6">
     {#each Object.entries($WordLists) as [_, wordList]}
-      <WordListItem wordList={wordList} />
+      <WordListItem {wordList} />
     {/each}
   </main>
 

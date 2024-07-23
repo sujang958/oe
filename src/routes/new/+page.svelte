@@ -11,7 +11,7 @@
   let wordlist: WordList = { title: "", words: [], id: crypto.randomUUID() }
 </script>
 
-<div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen">
+<div class="flex flex-col px-8 md:px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen">
   <Button on:click={() => goto("/")} class="bg-transparent -ml-2 -mt-2 py-1">
     <ChevronLeft class="h-4 w-4" />
     Go home</Button

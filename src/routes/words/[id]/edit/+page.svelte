@@ -24,7 +24,7 @@
   })
 </script>
 
-<div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen">
+<div class="flex flex-col px-8 md:px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen">
   <TopArea>
     <GoBackButton where="/words/{id}" />
   </TopArea>

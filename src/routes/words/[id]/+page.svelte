@@ -21,7 +21,7 @@
   let currentTab: "words" | "stats" = "words" // TODO: load this from the url
 </script>
 
-<div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full min-h-screen self-center">
+<div class="flex flex-col px-8 md:px-16 pt-12 pb-16 max-w-2xl w-full min-h-screen self-center">
   <TopArea>
     <GoBackButton where="/" />
   </TopArea>
