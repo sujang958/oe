@@ -7,6 +7,7 @@
   import TopArea from "$lib/components/TopArea.svelte"
   import { WordLists } from "$lib/stores/WordList"
   import type { WordList } from "$lib/types/WordList"
+  import { Check, X } from "lucide-svelte"
 
   const id = $page.params.id
   const wordlist =
@@ -37,7 +38,20 @@
   </div>
 </div>
 
-<BottomArea>
+<BottomArea class="relative">
+  <section
+    class="absolute bg-neutral-200 left-4 right-4 bottom-16 rounded-lg p-3.5 flex flex-row items-center justify-between"
+  >
+    <div>
+      <p class="text-2xl font-semibold">'안녕하세요' means 'Hello'</p>
+      <p class="text-lg">Mark it correct if your answer is correct.</p>
+    </div>
+    <div class="flex flex-col items-end gap-2">
+      <Button class="bg-green-300 text-green-950"><Check class="h-4 w-4" /> Correct</Button>
+      <Button class="bg-red-300 text-red-950"><X class="h-4 w-4" /> Incorrect</Button>
+    </div>
+  </section>
+
   <Button class="flex-1 justify-center py-1.5 text-base">Skip</Button>
   <Button class="flex-1 justify-center py-1.5 text-base bg-blue-400 text-blue-900">Check</Button>
 </BottomArea>
