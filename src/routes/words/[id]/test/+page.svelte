@@ -8,25 +8,33 @@
   import { WordLists } from "$lib/stores/WordList"
   import type { WordList } from "$lib/types/WordList"
   import { Check, X } from "lucide-svelte"
+  import { onMount } from "svelte"
+  import { flip } from "svelte/animate"
 
   const id = $page.params.id
   const wordlist =
     $WordLists[id] ??
     ({ id: "-1", title: "", words: [{ word: "Loading", meaning: "" }] } satisfies WordList)
 
+  let words = structuredClone(wordlist.words)
+
   let currentWordIndex = 0
+
+  let rect: number
+
+  onMount(() => {
+    console.log(rect)
+  })
 
   // TODO: add "press / to focus"
 </script>
 
-<div class="flex flex-col px-8 md:px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen">
-  <TopArea class="justify-between">
-    <GoBackButton where="/words/{id}" />
-    <p class="text-base font-meidum">{wordlist.title}</p>
-  </TopArea>
+<TopArea class="justify-between">
+  <GoBackButton where="/words/{id}" />
+  <p class="text-base font-meidum">{wordlist.title}</p>
+</TopArea>
 
-  <div class="py-5"></div>
-
+<div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen">
   <div class="flex-1 flex flex-col items-center justify-center">
     <p class="text-base font-medium text-neutral-500 -mt-8">
       {currentWordIndex + 1} / {wordlist.words.length}
@@ -40,7 +48,7 @@
 
 <BottomArea class="relative">
   <section
-    class="absolute bg-neutral-200 left-4 right-4 bottom-16 rounded-lg p-3.5 flex flex-row items-center justify-between"
+    class="absolute bg-neutral-200 left-4 right-4 bottom-14 rounded-lg p-3.5 flex flex-row items-center justify-between"
   >
     <div>
       <p class="text-2xl font-semibold">'안녕하세요' means 'Hello'</p>
@@ -54,8 +62,9 @@
 
   <!-- TODO: add some animations after clicking on the Check button later -->
 
-  <Button class="flex-1 justify-center py-1.5 text-base bg-red-300 text-red-950"
-    ><X class="h-4 w-4" /> Incorrect</Button
+  <Button
+    class="flex-1 justify-center py-1.5 text-base bg-red-300 text-red-950"
+    on:click={() => (words = [...words.slice(1)])}><X class="h-4 w-4" /> Incorrect</Button
   >
   <Button class="flex-1 justify-center py-1.5 text-base bg-green-300 text-green-950"
     ><Check class="h-4 w-4" /> Correct</Button
