@@ -16,15 +16,13 @@
     $WordLists[id] ??
     ({ id: "-1", title: "", words: [{ word: "Loading", meaning: "" }] } satisfies WordList)
 
-  let words = structuredClone(wordlist.words)
+  let words = structuredClone(wordlist.words).map((word) => ({ ...word, id: crypto.randomUUID() }))
 
   let currentWordIndex = 0
 
   let rect: number
 
-  onMount(() => {
-    console.log(rect)
-  })
+  $: console.log(rect, words)
 
   // TODO: add "press / to focus"
 </script>
@@ -34,16 +32,30 @@
   <p class="text-base font-meidum">{wordlist.title}</p>
 </TopArea>
 
-<div class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen">
-  <div class="flex-1 flex flex-col items-center justify-center">
-    <p class="text-base font-medium text-neutral-500 -mt-8">
-      {currentWordIndex + 1} / {wordlist.words.length}
-    </p>
-    <div class="py-4"></div>
-    <p class="text-5xl font-bold">{wordlist.words[0].word}</p>
-    <div class="py-5"></div>
-    <Input class="w-56" placeholder="Type your answer" />
-  </div>
+<div
+  class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen overflow-clip"
+>
+  <div class="p-0" bind:clientWidth={rect}></div>
+
+  <!-- TODO: fix this animation later -->
+
+  <main class="flex flex-row items-center flex-1 min-w-max">
+    {#each words as word, i (word.id)}
+      <div
+        animate:flip={{ duration: 400 }}
+        style="width: {rect}px"
+        class="flex-1 flex flex-col items-center justify-center"
+      >
+        <p class="text-base font-medium text-neutral-500 -mt-8">
+          {i + 1} / {words.length}
+        </p>
+        <div class="py-4"></div>
+        <p class="text-5xl font-bold">{word.word}</p>
+        <div class="py-5"></div>
+        <Input class="w-56" placeholder="Type your answer" />
+      </div>
+    {/each}
+  </main>
 </div>
 
 <BottomArea class="relative">
