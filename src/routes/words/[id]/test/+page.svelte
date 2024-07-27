@@ -35,11 +35,11 @@
 <div
   class="flex flex-col px-16 pt-12 pb-16 max-w-2xl w-full self-center min-h-screen overflow-clip"
 >
-  <div class="p-0" bind:clientWidth={rect}></div>
+  <div class="p-0 w-full" bind:clientWidth={rect}></div>
 
   <!-- TODO: fix this animation later -->
 
-  <main class="flex flex-row items-center flex-1 min-w-max">
+  <main class="flex flex-row items-center flex-1 min-w-max gap-x-16">
     {#each words as word, i (word.id)}
       <div
         animate:flip={{ duration: 400 }}
