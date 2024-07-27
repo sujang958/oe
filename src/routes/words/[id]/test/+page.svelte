@@ -10,6 +10,8 @@
   import { Check, X } from "lucide-svelte"
   import { onMount } from "svelte"
   import { flip } from "svelte/animate"
+  import type { TestedWord } from "$lib/types/Test"
+  import toast from "svelte-french-toast"
 
   const id = $page.params.id
   const wordlist =
@@ -21,6 +23,14 @@
   let currentWordIndex = 0
 
   let rect: number
+  let isMarking = false
+
+  const testedWord: TestedWord[] = []
+
+  const goNextWord = () => {
+    words = [...words.slice(1)]
+    isMarking = false
+  }
 
   $: console.log(rect, words)
 
@@ -59,28 +69,45 @@
 </div>
 
 <BottomArea class="relative">
-  <section
-    class="absolute bg-neutral-200 left-4 right-4 bottom-14 rounded-lg p-3.5 flex flex-row items-center justify-between"
-  >
-    <div>
-      <p class="text-2xl font-semibold">'안녕하세요' means 'Hello'</p>
-      <p class="text-lg">Mark it 'correct' if you think that your answer is correct.</p>
-    </div>
-    <!-- <div class="flex flex-col items-end gap-2">
-      <Button class="bg-green-300 text-green-950"><Check class="h-4 w-4" /> Correct</Button>
-      <Button class="bg-red-300 text-red-950"><X class="h-4 w-4" /> Incorrect</Button>
-    </div> -->
-  </section>
-
   <!-- TODO: add some animations after clicking on the Check button later -->
+  {#if isMarking}
+    <section
+      class="absolute bg-neutral-200 left-4 right-4 bottom-14 rounded-lg p-3.5 flex flex-row items-center justify-between"
+    >
+      <div>
+        <p class="text-2xl font-semibold">'안녕하세요' means 'Hello'</p>
+        <p class="text-lg">Mark it 'correct' if you think that your answer is correct.</p>
+      </div>
+    </section>
 
-  <Button
-    class="flex-1 justify-center py-1.5 text-base bg-red-300 text-red-950"
-    on:click={() => (words = [...words.slice(1)])}><X class="h-4 w-4" /> Incorrect</Button
-  >
-  <Button class="flex-1 justify-center py-1.5 text-base bg-green-300 text-green-950"
-    ><Check class="h-4 w-4" /> Correct</Button
-  >
-  <!-- <Button class="flex-1 justify-center py-1.5 text-base">Skip</Button>
-  <Button class="flex-1 justify-center py-1.5 text-base bg-blue-400 text-blue-900">Check</Button> -->
+    <Button
+      class="flex-1 justify-center py-1.5 text-base bg-red-300 text-red-950"
+      on:click={() => {
+        testedWord.push({ word: words.at(0) ?? { meaning: "", word: "" }, result: "INCORRECT" })
+        goNextWord()
+      }}><X class="h-4 w-4" /> Incorrect</Button
+    >
+    <Button
+      class="flex-1 justify-center py-1.5 text-base bg-green-300 text-green-950"
+      on:click={() => {
+        testedWord.push({ word: words.at(0) ?? { meaning: "", word: "" }, result: "CORRECT" })
+        goNextWord()
+      }}><Check class="h-4 w-4" /> Correct</Button
+    >
+  {:else}
+    <Button
+      class="flex-1 justify-center py-1.5 text-base"
+      on:click={() => {
+        testedWord.push({ word: words.at(0) ?? { meaning: "", word: "" }, result: "SKIPPED" })
+        toast.success("Skipped")
+        goNextWord()
+      }}>Skip</Button
+    >
+    <Button
+      class="flex-1 justify-center py-1.5 text-base bg-blue-400 text-blue-900"
+      on:click={() => {
+        isMarking = true
+      }}>Check</Button
+    >
+  {/if}
 </BottomArea>
