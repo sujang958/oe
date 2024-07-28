@@ -39,6 +39,10 @@
 
   let finished = false
 
+  const incorrectWordCase = testedWord.filter((word) => word.result == "INCORRECT")
+  const correctWordCase = testedWord.filter((word) => word.result == "CORRECT")
+  const skippedWordCase = testedWord.filter((word) => word.result == "SKIPPED")
+
   $: if (words.length <= 0) finished = true
 
   $: console.log(rect, words)
@@ -56,24 +60,27 @@
     class="flex flex-col px-8 md:px-16 pt-24 pb-16 max-w-2xl w-full self-center min-h-screen overflow-clip"
   >
     <p class="text-[1.65rem] font-bold">Test Results</p>
+    <p class="text-base font-medium text-neutral-600 mt-1 text-balance">
+      {incorrectWordCase.length} wrong answers, {correctWordCase.length} correct answers
+    </p>
     <div class="py-5"></div>
     <section class="border border-neutral-100 rounded-xl px-3 pb-2">
-      <p class="py-2 text-lg font-medium">Wrong Answers</p>
+      <p class="py-2 text-base md:text-lg font-medium">Wrong Answers</p>
       <hr />
       <table class="mt-4 table-fixed w-full">
         <thead>
           <tr>
-            <th class="text-left">Word</th>
-            <th class="text-left">Correct Answer</th>
-            <th class="text-left">Your Answer</th>
+            <th class="text-sm md:text-base text-left">Word</th>
+            <th class="text-sm md:text-base text-left">Correct Answer</th>
+            <th class="text-sm md:text-base text-left">Your Answer</th>
           </tr>
         </thead>
         <tbody>
-          {#each testedWord.filter((word) => word.result == "INCORRECT") as wordCase}
+          {#each incorrectWordCase as wordCase}
             <tr>
-              <td class="py-2">{wordCase.word.word}</td>
-              <td class="py-2">{wordCase.word.meaning}</td>
-              <td class="py-2">{wordCase.answer}</td>
+              <td class="text-sm md:text-base py-2">{wordCase.word.word}</td>
+              <td class="text-sm md:text-base py-2">{wordCase.word.meaning}</td>
+              <td class="text-sm md:text-base py-2">{wordCase.answer}</td>
             </tr>
           {/each}
         </tbody>
@@ -81,22 +88,22 @@
     </section>
     <div class="py-4"></div>
     <section class="border border-neutral-200 rounded-xl px-3 pb-2">
-      <p class="py-2 text-lg font-medium">Skipped Words</p>
+      <p class="py-2 text-base md:text-lg font-medium">Skipped Words</p>
       <hr />
       <table class="mt-4 table-fixed w-full">
         <thead>
           <tr>
-            <th class="text-left">Word</th>
-            <th class="text-left">Correct Answer</th>
-            <th class="text-left">Your Guess</th>
+            <th class="text-sm md:text-base text-left">Word</th>
+            <th class="text-sm md:text-base text-left">Correct Answer</th>
+            <th class="text-sm md:text-base text-left">Your Guess</th>
           </tr>
         </thead>
         <tbody>
-          {#each testedWord.filter((word) => word.result == "SKIPPED") as wordCase}
+          {#each skippedWordCase as wordCase}
             <tr>
-              <td class="py-2">{wordCase.word.word}</td>
-              <td class="py-2">{wordCase.word.meaning}</td>
-              <td class="py-2">{wordCase.answer}</td>
+              <td class="text-sm md:text-base py-2">{wordCase.word.word}</td>
+              <td class="text-sm md:text-base py-2">{wordCase.word.meaning}</td>
+              <td class="text-sm md:text-base py-2">{wordCase.answer}</td>
             </tr>
           {/each}
         </tbody>
@@ -104,28 +111,30 @@
     </section>
     <div class="py-4"></div>
     <section class="border border-neutral-200 rounded-xl px-3 pb-2">
-      <p class="py-2 text-lg font-medium">Correct Answers</p>
+      <p class="py-2 text-base md:text-lg font-medium">Correct Answers</p>
       <hr />
       <table class="mt-4 table-fixed w-full">
         <thead>
           <tr>
-            <th class="text-left">Word</th>
-            <th class="text-left">Correct Answer</th>
-            <th class="text-left">Your Answer</th>
+            <th class="text-sm md:text-base text-left">Word</th>
+            <th class="text-sm md:text-base text-left">Correct Answer</th>
+            <th class="text-sm md:text-base text-left">Your Answer</th>
           </tr>
         </thead>
         <tbody>
-          {#each testedWord.filter((word) => word.result == "CORRECT") as wordCase}
+          {#each correctWordCase as wordCase}
             <tr>
-              <td class="py-2">{wordCase.word.word}</td>
-              <td class="py-2">{wordCase.word.meaning}</td>
-              <td class="py-2">{wordCase.answer}</td>
+              <td class="text-sm md:text-base py-2">{wordCase.word.word}</td>
+              <td class="text-sm md:text-base py-2">{wordCase.word.meaning}</td>
+              <td class="text-sm md:text-base py-2">{wordCase.answer}</td>
             </tr>
           {/each}
         </tbody>
       </table>
     </section>
   </div>
+
+  <div class="py-8"></div>
 
   <BottomArea class="relative">
     <Button on:click={() => goto(`/words/${id}`)} class="flex-1 justify-center py-1.5 text-base"
@@ -166,13 +175,17 @@
         class="absolute bg-neutral-100 left-4 right-4 bottom-14 rounded-lg p-3.5 flex flex-row items-center justify-between"
       >
         <div>
-          <p class="text-2xl font-semibold">'안녕하세요' means 'Hello'</p>
-          <p class="text-lg">Mark it 'correct' if you think that your answer is correct.</p>
+          <p class="text-xl md:text-2xl font-semibold">
+            '{words[0].word}' means '{words[0].meaning}'
+          </p>
+          <p class="text-base md:text-lg mt-1">
+            Mark it 'correct' if you think that your answer is correct.
+          </p>
         </div>
       </section>
 
       <Button
-        class="flex-1 justify-center py-1.5 text-base bg-red-300 text-red-950"
+        class="flex-1 justify-center py-1.5 text-sm md:text-base bg-red-300 text-red-950"
         on:click={() => {
           goNextWord({
             answer,
@@ -182,7 +195,7 @@
         }}><X class="h-4 w-4" /> Incorrect</Button
       >
       <Button
-        class="flex-1 justify-center py-1.5 text-base bg-green-300 text-green-950"
+        class="flex-1 justify-center py-1.5 text-sm md:text-base bg-green-300 text-green-950"
         on:click={() => {
           goNextWord({
             answer,
@@ -193,7 +206,7 @@
       >
     {:else}
       <Button
-        class="flex-1 justify-center py-1.5 text-base"
+        class="flex-1 justify-center py-1.5 text-sm md:text-base"
         on:click={() => {
           goNextWord({
             answer,
@@ -204,7 +217,7 @@
         }}>Skip</Button
       >
       <Button
-        class="flex-1 justify-center py-1.5 text-base bg-blue-400 text-blue-900"
+        class="flex-1 justify-center py-1.5 text-sm md:text-base bg-blue-400 text-blue-900"
         on:click={() => {
           isMarking = true
         }}>Check</Button

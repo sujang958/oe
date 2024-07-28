@@ -28,8 +28,8 @@
 
   <div class="py-5"></div>
 
-  <p class="text-4xl font-bold">{wordList.title}</p>
-  <p class="text-lg mt-2 font-medium text-neutral-600">
+  <p class="text-[2rem] md:text-4xl font-bold">{wordList.title}</p>
+  <p class="text-base md:text-lg mt-2 font-medium text-neutral-600">
     {wordList.words.length} words | Praticed 29 times
   </p>
 
@@ -75,7 +75,7 @@
         ? ''
         : '-translate-x-full'}"
     >
-      <div
+      <section
         class="h-full flex w-full flex-col py-3 gap-y-4 transition duration-300 rounded-lg relative {currentTab ==
         'words'
           ? 'opacity-100'
@@ -83,16 +83,16 @@
       >
         {#each wordList.words as word}
           <div class="flex flex-row items-center gap-x-6 justify-between">
-            <p class="text-xl text-balance font-medium">{word.word}</p>
-            <p class="text-lg text-balance text-right max-w-96">
+            <p class="text-lg md:text-xl text-balance font-medium">{word.word}</p>
+            <p class="text-base md:text-lg text-balance text-right max-w-96">
               {word.meaning}
             </p>
           </div>
         {/each}
         <!-- <p class="left-1/2 -translate-x-full text-center text-xs text-neutral-700 absolute -bottom-6">1 word</p> -->
-      </div>
+      </section>
 
-      <div
+      <section
         class={`absolute top-2 ${currentTab == "stats" ? "opacity-100" : "opacity-0"} rounded-lg overflow-visible w-full flex flex-col py-3 gap-y-4 translate-x-full duration-300 transition`}
       >
         <div class="flex flex-row items-center gap-x-6 justify-between">
@@ -103,7 +103,7 @@
           <p class="text-lg text-balance">Test History</p>
           <Button>View</Button>
         </div>
-      </div>
+      </section>
     </main>
   </section>
 
