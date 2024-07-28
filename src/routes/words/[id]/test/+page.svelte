@@ -22,15 +22,19 @@
   let words = structuredClone(wordlist.words).map((word) => ({ ...word, id: crypto.randomUUID() }))
 
   let currentWordIndex = 0
+  let answer = ""
 
   let rect: number
   let isMarking = false
 
   const testedWord: TestedWord[] = []
 
-  const goNextWord = () => {
+  const goNextWord = (word: TestedWord) => {
+    testedWord.push(word)
+    currentWordIndex += 1
     words = [...words.slice(1)]
     isMarking = false
+    answer = ""
   }
 
   let finished = false
@@ -51,12 +55,12 @@
   <div
     class="flex flex-col px-16 pt-24 pb-16 max-w-2xl w-full self-center min-h-screen overflow-clip"
   >
-    <p class="text-3xl font-bold">Test Results</p>
-    <div class="py-6"></div>
+    <p class="text-[1.65rem] font-bold">Test Results</p>
+    <div class="py-5"></div>
     <section class="border border-neutral-100 rounded-xl px-3 pb-2">
       <p class="py-2 text-lg font-medium">Wrong Answers</p>
       <hr />
-      <table class="mt-4 table-auto w-full">
+      <table class="mt-4 table-fixed w-full">
         <thead>
           <tr>
             <th class="text-left">Word</th>
@@ -65,11 +69,36 @@
           </tr>
         </thead>
         <tbody>
+          {#each testedWord.filter((word) => word.result == "INCORRECT") as wordCase}
+            <tr>
+              <td class="py-2">{wordCase.word.word}</td>
+              <td class="py-2">{wordCase.word.meaning}</td>
+              <td class="py-2">{wordCase.answer}</td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </section>
+    <div class="py-4"></div>
+    <section class="border border-neutral-200 rounded-xl px-3 pb-2">
+      <p class="py-2 text-lg font-medium">Skipped Words</p>
+      <hr />
+      <table class="mt-4 table-fixed w-full">
+        <thead>
           <tr>
-            <td class="py-2">안녕하세요</td>
-            <td class="py-2">Hello</td>
-            <td class="py-2">Fuck</td>
+            <th class="text-left">Word</th>
+            <th class="text-left">Correct Answer</th>
+            <th class="text-left">Your Guess</th>
           </tr>
+        </thead>
+        <tbody>
+          {#each testedWord.filter((word) => word.result == "SKIPPED") as wordCase}
+            <tr>
+              <td class="py-2">{wordCase.word.word}</td>
+              <td class="py-2">{wordCase.word.meaning}</td>
+              <td class="py-2">{wordCase.answer}</td>
+            </tr>
+          {/each}
         </tbody>
       </table>
     </section>
@@ -77,7 +106,7 @@
     <section class="border border-neutral-200 rounded-xl px-3 pb-2">
       <p class="py-2 text-lg font-medium">Correct Answers</p>
       <hr />
-      <table class="mt-4 table-auto w-full">
+      <table class="mt-4 table-fixed w-full">
         <thead>
           <tr>
             <th class="text-left">Word</th>
@@ -86,11 +115,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="py-2">안녕하세요</td>
-            <td class="py-2">Hello</td>
-            <td class="py-2">Fuck</td>
-          </tr>
+          {#each testedWord.filter((word) => word.result == "CORRECT") as wordCase}
+            <tr>
+              <td class="py-2">{wordCase.word.word}</td>
+              <td class="py-2">{wordCase.word.meaning}</td>
+              <td class="py-2">{wordCase.answer}</td>
+            </tr>
+          {/each}
         </tbody>
       </table>
     </section>
@@ -117,12 +148,12 @@
           class="flex-1 flex flex-col items-center justify-center"
         >
           <p class="text-base font-medium text-neutral-500 -mt-8">
-            {i + 1} / {words.length}
+            {currentWordIndex + 1} / {wordlist.words.length}
           </p>
           <div class="py-4"></div>
           <p class="text-5xl font-bold">{word.word}</p>
           <div class="py-5"></div>
-          <Input class="w-56" placeholder="Type your answer" />
+          <Input bind:value={answer} class="w-56" placeholder="Type your answer" />
         </div>
       {/each}
     </main>
@@ -143,24 +174,33 @@
       <Button
         class="flex-1 justify-center py-1.5 text-base bg-red-300 text-red-950"
         on:click={() => {
-          testedWord.push({ word: words.at(0) ?? { meaning: "", word: "" }, result: "INCORRECT" })
-          goNextWord()
+          goNextWord({
+            answer,
+            word: words.at(0) ?? { meaning: "", word: "" },
+            result: "INCORRECT"
+          })
         }}><X class="h-4 w-4" /> Incorrect</Button
       >
       <Button
         class="flex-1 justify-center py-1.5 text-base bg-green-300 text-green-950"
         on:click={() => {
-          testedWord.push({ word: words.at(0) ?? { meaning: "", word: "" }, result: "CORRECT" })
-          goNextWord()
+          goNextWord({
+            answer,
+            word: words.at(0) ?? { meaning: "", word: "" },
+            result: "CORRECT"
+          })
         }}><Check class="h-4 w-4" /> Correct</Button
       >
     {:else}
       <Button
         class="flex-1 justify-center py-1.5 text-base"
         on:click={() => {
-          testedWord.push({ word: words.at(0) ?? { meaning: "", word: "" }, result: "SKIPPED" })
+          goNextWord({
+            answer,
+            word: words.at(0) ?? { meaning: "", word: "" },
+            result: "SKIPPED"
+          })
           toast.success("Skipped")
-          goNextWord()
         }}>Skip</Button
       >
       <Button
