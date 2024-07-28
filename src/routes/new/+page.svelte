@@ -32,13 +32,15 @@
 </div>
 
 <BottomArea>
-  <Button class="bg-red-200 text-red-900 text-base w-full justify-center py-1.5">Cancel</Button>
+  <Button class="bg-red-200 text-red-900 text-sm md:text-base w-full justify-center py-1.5"
+    >Cancel</Button
+  >
   <Button
     on:click={() => {
       $WordLists = { ...$WordLists, [wordlist.id]: wordlist }
       toast.success("Created")
       goto("/")
     }}
-    class="bg-blue-400 text-blue-900 text-base w-full justify-center py-1.5">Save</Button
+    class="bg-blue-400 text-blue-900 text-sm md:text-base w-full justify-center py-1.5">Save</Button
   >
 </BottomArea>

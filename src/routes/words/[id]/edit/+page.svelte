@@ -36,7 +36,7 @@
 
 <BottomArea>
   <Button
-    class="flex-1 justify-center py-1.5 text-base"
+    class="flex-1 justify-center py-1.5 text-sm md:text-base"
     on:click={() => {
       wordlist = firstVersion
       history.back()
@@ -44,7 +44,7 @@
     }}>Cancel</Button
   >
   <Button
-    class="flex-1 justify-center py-1.5 text-base bg-green-400 text-green-950"
+    class="flex-1 justify-center py-1.5 text-sm md:text-base bg-green-400 text-green-950"
     on:click={() => {
       if (wordlist.title.replace(/ /gi, "").length <= 0)
         return toast.error("Title must contain a character at least", { duration: 2500 })
