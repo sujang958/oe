@@ -53,7 +53,7 @@
 
 {#if finished}
   <div
-    class="flex flex-col px-16 pt-24 pb-16 max-w-2xl w-full self-center min-h-screen overflow-clip"
+    class="flex flex-col px-8 md:px-16 pt-24 pb-16 max-w-2xl w-full self-center min-h-screen overflow-clip"
   >
     <p class="text-[1.65rem] font-bold">Test Results</p>
     <div class="py-5"></div>
